@@ -1,14 +1,23 @@
 package encapsulationex2;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import arraylist.Product;
+
 public class Home {
+	
+	private static ArrayList<Appliances> list;
+	
+	public Home() {
+		this.list=new ArrayList<>();
+	}
 	
 		private static final double price = 0;
 		static Scanner sc=new Scanner(System.in);
 		static Appliances ap= new Appliances();
-		
+		Customer_operation cop= new Customer_operation();
 
 		public static void setData() {
 			System.out.println("Enter Product Id: ");
@@ -20,13 +29,14 @@ public class Home {
 			
 			System.out.println("Enter Product Price : ");
 			ap.setProductPrice(sc.nextDouble());
+			list.add(ap);
+			
 			
 		}
 		
 		public void getData() {
-			ap.getProductId();
-			ap.getProductName();
-			ap.getProductPrice();
+			System.out.println("Id of Product: "+ap.getProductId()+"\nProduct Name: "+ap.getProductName()+"\nProduct Price: "+ap.getProductPrice());
+			
 		}
 		
 		public void update() {
@@ -48,6 +58,12 @@ public class Home {
 			ap.setProductPrice(ch3);
 			//System.out.print(LocalDateTime.time);
 			}
-			
 		}
+		
+		public void displayItems() {
+		for(Appliances ap1 : list ) {
+			System.out.println("Product Id= "+ap1.getProductId()+"\nProduct Name= "+ap1.getProductName()+"\nProduct Price= "+ap1.getProductPrice());
+		}
+		}
+		
 }
